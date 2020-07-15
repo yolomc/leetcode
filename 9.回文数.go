@@ -8,20 +8,17 @@ import "strconv"
 
 // @lc code=start
 func isPalindrome(x int) bool {
-	xStr := strconv.Itoa(x)
-	res := true
-	for i := 0; ; {
-		if i >= len(xStr) {
-			break
-		}
-
-		if xStr[i] != xStr[len(xStr)-1-i] {
-			res = false
-			break
-		}
-		i++
+	if x < 0 {
+		return false
 	}
-	return res
+
+	xStr := strconv.Itoa(x)
+	for i := 0; i < len(xStr); i++ {
+		if xStr[i] != xStr[len(xStr)-1-i] {
+			return false
+		}
+	}
+	return true
 }
 
 // @lc code=end
