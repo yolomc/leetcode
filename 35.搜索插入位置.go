@@ -10,13 +10,32 @@ func searchInsert(nums []int, target int) int {
 		return 0
 	}
 
-	i := 0
-	for ; i < len(nums); i++ {
-		if nums[i] >= target {
-			break
+	lIdx := 0
+	rIdx := len(nums) - 1
+	mIdx := rIdx / 2
+	mNum := nums[mIdx]
+	res := 0
+	for {
+		switch {
+		case mNum > target:
+			rIdx = mIdx - 1
+		case mNum < target:
+			lIdx = mIdx + 1
+		default:
+			res = mIdx
+			goto End
 		}
+
+		if lIdx > rIdx {
+			res = lIdx
+			goto End
+		}
+		mIdx = (lIdx + rIdx) / 2
+		mNum = nums[mIdx]
 	}
-	return i
+
+End:
+	return res
 }
 
 // @lc code=end
