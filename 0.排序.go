@@ -34,14 +34,14 @@ func merge(a []int, b []int) []int {
 
 //QuickSort 快速排序
 func QuickSort(nums []int) []int {
-	quickSort(nums, 0, len(nums))
+	quickSort(nums, 0, len(nums)-1)
 	return nums
 }
 func quickSort(nums []int, l int, r int) {
 	if l >= r {
 		return
 	}
-	pIdx := partition(nums, l, r-1)
+	pIdx := partition(nums, l, r)
 	quickSort(nums, l, pIdx-1)
 	quickSort(nums, pIdx+1, r)
 }
